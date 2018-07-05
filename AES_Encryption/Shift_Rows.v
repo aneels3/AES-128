@@ -23,7 +23,7 @@ module Shift_Rows(clk,b_in,b_out);
 	input [127:0] b_in;
 	output  [127:0] b_out;
 
-    assign b_out[127:120]=b_in[127:120];
+    	 assign b_out[127:120]=b_in[127:120];
 	 assign b_out[119:112]=b_in[87:80];
 	 assign b_out[111:104]=b_in[47:40];
 	 assign b_out[103:96]=b_in[7:0];
