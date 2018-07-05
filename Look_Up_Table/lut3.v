@@ -25,8 +25,8 @@ module lut3(mc_in,b
 	 
 always@(mc_in)
 begin
-	 case(mc_in)
-		8'h00: b=8'h00;      
+    case(mc_in)
+	   8'h00: b=8'h00;      
 	   8'h01: b=8'h03;
 	   8'h02: b=8'h06;
 	   8'h03: b=8'h05;
@@ -282,6 +282,6 @@ begin
 	   8'hfd: b=8'h1c;
 	   8'hfe: b=8'h19;
 	   8'hff: b=8'h1a;
-	endcase
+    endcase
 end
 endmodule
