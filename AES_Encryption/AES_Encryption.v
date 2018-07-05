@@ -36,7 +36,7 @@ module AES_Encryption(clk,Data_in,key_in,cipher_out
 		wire [127:0] mc[9:0];
 		wire [127:0] mc_sr[10:0];
 		
-		assign data_in=key_in^Data_in;
+	assign data_in=key_in^Data_in;
 		
 		Key k0 (.rc(4'b0000),.k_in(key_in),.k_out(key_out[0]));
 		MUX2_1 MUX0 (.A1(data_in),.A2(round_out[0]),.S(1'b0),.B(mux_out1[0]));
@@ -51,9 +51,8 @@ module AES_Encryption(clk,Data_in,key_in,cipher_out
 		
 genvar i;
 generate
-	for(i=1;i<=9;i=i+1) 	begin:
-	test
- if(i<9)
+   for(i=1;i<=9;i=i+1) begin: test
+ 	if(i<9)
 	begin
 		Key k_i (.rc(i),.k_in(key_out[i-1]),.k_out(key_out[i]));
 		MUX2_1 MUX_i (.A2(round_out[i-1]),.S(1'b1),.B(mux_out1[i]));
@@ -64,10 +63,9 @@ generate
 		mux mux_i (.a1(sr[i]),.a2(mc[i]),.s(1'b1),.b(mc_sr[i]));
 		Sub_Key sk_i (.key_in(key_out[i]),.mc_sr_out(mc_sr[i]),.data_out(round_out1[i]));
 		Round_reg r_i(.clk(clk),.r_in(round_out1[i]),.r_out(round_out[i]));
-
 	end
-		else
-		begin
+	else
+	begin
 		Key k_f (.rc(i),.k_in(key_out[i-1]),.k_out(key_out[i]));
 		MUX2_1 MUX_f (.A2(round_out[i-1]),.S(1'b1),.B(mux_out1[i]));
 		Sub_Bytes sb_f (.A(mux_out1[i]),.B1(sb[i]));
@@ -76,7 +74,7 @@ generate
 		mux mux_f (.a1(sr[i]),.s(1'b0),.b(mc_sr[i]));
 		Sub_Key sk_f (.key_in(key_out[i]),.mc_sr_out(mc_sr[i]),.data_out(round_out1[i]));
 		Round_reg r_f (.clk(clk),.r_in(round_out1[i]),.r_out(cipher_out));
-		end
+	end
 end
-	endgenerate
-	endmodule 
+endgenerate
+endmodule 
