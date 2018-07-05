@@ -25,7 +25,7 @@ output reg [7:0] b;
 always @(a)
 begin
     case (a)
-      8'h00: b=8'h63;
+      	   8'h00: b=8'h63;
 	   8'h01: b=8'h7c;
 	   8'h02: b=8'h77;
 	   8'h03: b=8'h7b;
@@ -281,6 +281,6 @@ begin
 	   8'hfd: b=8'h54;
 	   8'hfe: b=8'hbb;
 	   8'hff: b=8'h16;
-	endcase
+    endcase
 end
 endmodule
