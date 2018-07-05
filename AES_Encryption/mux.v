@@ -26,9 +26,9 @@ module mux(a1,a2,s,b
 	 
 	 always @(*)
 	 begin
-			if(s==0)
-				b=a1;
-			else
-				b=a2;
+		if(s==0)
+			b=a1;
+		else
+			b=a2;
 	 end
 endmodule
