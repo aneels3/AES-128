@@ -29,13 +29,15 @@ output reg [127:0]key_out;
 
 always @(posedge clk)
 begin
-			if(clk==1)
-			begin
-			r_out=r_in;
-			key_out=key_in;
-			end
-			else
-			r_out=0;
-			key_out=0;
+	if(clk==1)
+	begin
+		r_out=r_in;
+		key_out=key_in;
+	end
+	else
+	begin
+		r_out=0;
+		key_out=0;
+	end
 end
 endmodule
